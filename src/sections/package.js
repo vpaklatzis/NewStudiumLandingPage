@@ -221,6 +221,82 @@ const packages = {
   ],
 };
 
+export default function Package() {
+    const { monthly, annual } = packages;
+    const [state, setState] = useState({
+        active: 'monthly',
+        pricingPlan: monthly
+    });
+
+    const handlePricingPlan = (plan) => {
+        if(plan === 'annual') {
+            setState({
+                active: 'annual',
+                pricingPlan: annual
+            });
+        } else {
+            setState({
+                active: 'monthly',
+                pricingPlan: monthly
+            });
+        }
+    }
+  
+    const sliderParams = {
+      additionalTransfrom: 0,
+      arrows: false,
+      autoPlaySpeed: 3000,
+      centerMode: false,
+      className: '',
+      slidesToSlide: 1,
+      items: 3,
+      containerClass: 'carousel-container',
+      customButtonGroup: <ButtonGroup />,
+      dotListClass: '',
+      focusOnSelect: false,
+      infinite: false,
+      keyBoardControl: false,
+      itemClass: '',
+      minimumTouchDrag: 80,
+      renderButtonGroupOutside: true,
+      renderDotsOutside: false,
+      responsive: responsive,
+      showDots: false,
+      sliderClass: '',
+    };
+  
+    return (
+        <section id="pricing" sx={{ variant: 'section.pricing' }}>
+            <Container>
+                <SectionHeader 
+                    slogan="Pricing Plan"
+                    title="Choose your pricing plan"
+                />
+                <Flex sx={styles.buttonGroup}>
+                    <Box sx={styles.buttonGroupInner}>
+                        <button
+                            className={state.active === 'monthly' ? 'active' : ''}
+                            type="button"
+                            area-label="Monthly"
+                            onClick={() => handlePricingPlan('monthly')}
+                        >
+                            Monthly Plan
+                        </button>
+                        <button
+                            className={state.active === 'annual' ? 'active' : ''}
+                            type="button"
+                            area-label="Annual"
+                            onClick={() => handlePricingPlan('annual')}
+                        >
+                            Annual Plan
+                        </button>
+                    </Box>
+                </Flex>
+            </Container>
+        </section>
+    );
+  }
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -238,37 +314,6 @@ const responsive = {
     draggable: true,
   },
 };
-
-export default function Package() {
-  const { monthly, annual } = packages;
-
-  const sliderParams = {
-    additionalTransfrom: 0,
-    arrows: false,
-    autoPlaySpeed: 3000,
-    centerMode: false,
-    className: '',
-    slidesToSlide: 1,
-    items: 3,
-    containerClass: 'carousel-container',
-    customButtonGroup: <ButtonGroup />,
-    dotListClass: '',
-    focusOnSelect: false,
-    infinite: false,
-    keyBoardControl: false,
-    itemClass: '',
-    minimumTouchDrag: 80,
-    renderButtonGroupOutside: true,
-    renderDotsOutside: false,
-    responsive: responsive,
-    showDots: false,
-    sliderClass: '',
-  };
-
-  return (
-    <h1>Package</h1>
-  );
-}
 
 const fadeIn = keyframes`
   from {
