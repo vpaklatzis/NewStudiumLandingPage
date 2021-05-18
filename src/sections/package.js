@@ -14,7 +14,7 @@ const packages = {
       id: 1,
       name: 'Free Plan',
       description: 'For Small teams or office',
-      buttonText: 'Start free trail',
+      buttonText: 'Start free trial',
       priceWithUnit: '$0',
       points: [
         {
@@ -49,7 +49,7 @@ const packages = {
       description: 'For Enterprise business',
       priceWithUnit: '$15',
       buttonText: 'Create account',
-      anotherOption: 'Or Start 14 Days trail',
+      anotherOption: 'Start 14 Days trial',
       points: [
         {
           id: 1,
@@ -85,7 +85,7 @@ const packages = {
       description: 'For pro level developers',
       priceWithUnit: '$24',
       buttonText: 'Create account',
-      anotherOption: 'Or Start 14 Days trail',
+      anotherOption: 'Start 14 Days trial',
       points: [
         {
           id: 1,
@@ -119,7 +119,7 @@ const packages = {
       id: 1,
       name: 'Free Plan',
       description: 'For Small teams or office',
-      buttonText: 'Start free trail',
+      buttonText: 'Start free trial',
       priceWithUnit: '$0',
       points: [
         {
@@ -154,7 +154,7 @@ const packages = {
       description: 'For Enterprise business',
       priceWithUnit: '$25',
       buttonText: 'Create account',
-      anotherOption: 'Or Start 10 Days trail',
+      anotherOption: 'Start 10 Days trial',
       points: [
         {
           id: 1,
@@ -190,7 +190,7 @@ const packages = {
       description: 'For pro level developers',
       priceWithUnit: '$39',
       buttonText: 'Create account',
-      anotherOption: 'Or Start 10 Days trail',
+      anotherOption: 'Start 10 Days trial',
       points: [
         {
           id: 1,
@@ -280,7 +280,7 @@ export default function Package() {
                             area-label="Monthly"
                             onClick={() => handlePricingPlan('monthly')}
                         >
-                            Monthly Plan
+                          Monthly Plan
                         </button>
                         <button
                             className={state.active === 'annual' ? 'active' : ''}
@@ -288,10 +288,19 @@ export default function Package() {
                             area-label="Annual"
                             onClick={() => handlePricingPlan('annual')}
                         >
-                            Annual Plan
+                          Annual Plan
                         </button>
                     </Box>
                 </Flex>
+                <Box sx={styles.pricingWrapper} className="pricing__wrapper">
+                  <Carousel {...sliderParams}>
+                    {state.pricingPlan.map((packageData) => (
+                      <Box sx={styles.pricingItem} key={packageData.id}>
+                        <PriceCard data={packageData} />
+                      </Box>
+                    ))}
+                  </Carousel>
+                </Box>
             </Container>
         </section>
     );
