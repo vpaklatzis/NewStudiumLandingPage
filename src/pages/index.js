@@ -13,12 +13,13 @@ import WorkFlow from '../sections/workflow';
 import Package from '../sections/package';
 import TeamSection from '../sections/team-section';
 import TestimonialCard from '../sections/testimonial';
+import Subscribe from '../sections/subscribe';
 
 export default function IndexPage() {
   return (
     <ThemeProvider theme={theme}>
         <Layout>
-          <SEO title="NextJS Landing Page" />
+          <SEO title="Omumu" />
           <Banner />
           <KeyFeature />
           <ServiceSection />
@@ -28,6 +29,7 @@ export default function IndexPage() {
           <Package />
           <TeamSection />
           <TestimonialCard />
+          <Subscribe />
         </Layout>
     </ThemeProvider>
   );
